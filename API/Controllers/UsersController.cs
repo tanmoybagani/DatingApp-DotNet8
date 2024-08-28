@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    // https://localhost:portnumber/api/users
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -17,6 +18,8 @@ namespace API.Controllers
             _dbContext = dbContext;
         }
 
+
+        // GET: https://localhost:portnumber/api/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
@@ -25,6 +28,8 @@ namespace API.Controllers
             return users;
         }
 
+
+        // GET: https://localhost:portnumber/api/users/{id}
         [HttpGet]
         [Route("{id:int}")]
         public async Task<ActionResult<AppUser>> GetUserById([FromRoute] int id)
